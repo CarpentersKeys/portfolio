@@ -1,12 +1,9 @@
 #layout nav {
+    // background-color: khaki;
     display: flex;
     width: 100%;
     font-family: var(--spartan);
     justify-content: center;
-}
-
-nav #offsiteUl {
-    align-self: center;
 }
 
 #layout #mainUl ul {
@@ -14,14 +11,16 @@ nav #offsiteUl {
 }
 
 #layout nav ul {
+    width: 50vw;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-flow: row wrap;
     list-style-type: none;
 }
 
 #layout a {
-    margin-bottom: 8px;
+    margin: 8px 0;
     display: block;
     text-decoration: none;
     color: var(--prim-clr);
@@ -42,7 +41,24 @@ nav #offsiteUl {
     font-family: var(--zen);
 }
 
+#offsiteUl ul {
+    display: flex;
+    place-content:center;
+    height: 100%;
+}
+
 #offsiteUl li {
-    font-size: smaller;
+    justify-content: left;
+    font-size: 30px;
+    min-height: auto;
+    display: flex;
     flex-basis: 100%;
+}
+
+#mainUl ul {
+    align-items: baseline;
+}
+
+.iconLink {
+    height: 30px;
 }

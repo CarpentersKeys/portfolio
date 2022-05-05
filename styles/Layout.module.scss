@@ -1,41 +1,48 @@
-#layout ul {
-    padding: 0;
-    margin: 0;
+#layout nav {
+    display: flex;
+    width: 100%;
+    font-family: var(--spartan);
     justify-content: center;
-    align-items: baseline;
+}
+
+nav #offsiteUl {
+    align-self: center;
+}
+
+#layout #mainUl ul {
+    justify-content: right;
+}
+
+#layout nav ul {
+    padding: 0;
     display: flex;
     flex-flow: row wrap;
     list-style-type: none;
 }
 
-#layout h1 a,
-#layout h2 {
-    font-family: var(--zen);
-    flex-basis: 100vw;
-}
-
-#layout nav {
-    display: flex;
-    width: 100vw;
-}
-
-#mainUl {
-    // background-color: red;
-}
-
-#offsiteUl {
-    background-color: red;
-}
-#layout li {
-    padding: 3rem;
-}
-
-#layout nav {
-    font-family: var(--spartan);
-}
-
 #layout a {
+    margin-bottom: 8px;
+    display: block;
     text-decoration: none;
+    color: var(--prim-clr);
 }
 
-#layout .offsite ul {}
+#layout a:hover,
+#layout h1:hover {
+    color: var(--tert-light-clr);
+}
+
+#layout nav li:first-child {
+    text-align: right;
+    flex-basis: 100%;
+}
+
+#layout h1 a {
+    color: var(--white);
+    font-family: var(--zen);
+}
+
+#offsiteUl li {
+    font-size: smaller;
+    flex-basis: 100%;
+}

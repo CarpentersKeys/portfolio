@@ -1,5 +1,5 @@
 :root {
-  --black: #171321;
+  --black: #16131d;
   --sec-clr: #4b945c;
   --sec-light-clr: #badec3;
   --prim-clr: #e09346;
@@ -42,4 +42,10 @@ a {
 }
 a:hover {
   text-decoration: none;
+}
+
+.divider {
+  margin: 14px;
+  min-width: 4px;
+  background-color: var(--white);
 }

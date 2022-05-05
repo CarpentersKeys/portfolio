@@ -10,16 +10,18 @@ export default function Layout({ pageTitle }) {
                 <title>{`Joshua O&apos;Neill Web Developer Portfolio: ${pageTitle}`}</title>
             </Head>
             <nav>
-                <ul id={styles.mainUl}>
-                    <li><h1><Link className={styles.link} href='/'>Joshua</Link></h1></li>
-                    <li><Link className={styles.link} href='/projects'>Projects</Link></li>
-                    <li><Link href='/resume'>Resume</Link></li>
-                    <li><Link href='/about'>About</Link></li>
-                    <li><Link href='/contact'>Contact</Link></li>
-                </ul>
+                <div id={styles.mainUl}>
+                    <ul>
+                        <li><h1><Link href='/'>Joshua</Link></h1></li>
+                        <li><Link href='/projects'>projects</Link></li>.
+                        <li><Link href='/resume'>resume</Link></li>.
+                        <li><Link href='/about'>about</Link></li>.
+                        <li><Link href='/contact'>contact</Link></li>()
+                    </ul>
+                </div>
+                <div className='divider' id={styles.bar}><div style={{height: '50%', backgroundColor: 'var(--prim-clr)', width: '3px'}}></div> </div>
                 <ul id={styles.offsiteUl}>
-                    <h2>Offsite</h2>
-                    <li><p><a rel="noreferrer noopener" target="_blank" href="https://github.com/CarpentersKeys">Github</a></p></li>
+                    <li><a className={styles.link} rel="noreferrer noopener" target="_blank" href="https://github.com/CarpentersKeys">Github</a></li>
                 </ul>
             </nav>
         </div>

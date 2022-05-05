@@ -1,0 +1,41 @@
+#layout ul {
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: baseline;
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+}
+
+#layout h1 a,
+#layout h2 {
+    font-family: var(--zen);
+    flex-basis: 100vw;
+}
+
+#layout nav {
+    display: flex;
+    width: 100vw;
+}
+
+#mainUl {
+    // background-color: red;
+}
+
+#offsiteUl {
+    background-color: red;
+}
+#layout li {
+    padding: 3rem;
+}
+
+#layout nav {
+    font-family: var(--spartan);
+}
+
+#layout a {
+    text-decoration: none;
+}
+
+#layout .offsite ul {}

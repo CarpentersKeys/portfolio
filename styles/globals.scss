@@ -6,9 +6,9 @@
   --tert-clr: #473594;
   --tert-light-clr: #a294e0;
   --white: #f7f8fa;
-  --font-size: 1.3rem;
-  --zen: "League Spartan", sans-serif;
-  --spartan: "Zen Maru Gothic", sans-serif;
+  --font-size: 1.5rem;
+  --spartan: "League Spartan", sans-serif;
+  --zen: "Zen Maru Gothic", sans-serif;
 }
 
 /* border box model: https://css-tricks.com/box-sizing/ */
@@ -25,7 +25,8 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: var(--spartan);
+  font-family: var(--zen);
+
   background-color: var(--black);
   color: var(--white);
   font-size: var(--font-size);

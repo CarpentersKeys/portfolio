@@ -1,9 +1,10 @@
 #layout nav {
-    // background-color: khaki;
     display: flex;
     width: 100%;
     font-family: var(--spartan);
     justify-content: center;
+    margin-top: 3vh;
+    margin-bottom: 7vh;
 }
 
 #layout #mainUl ul {
@@ -37,6 +38,8 @@
 }
 
 #layout h1 a {
+    display: inline;
+    font-size: 3rem;
     color: var(--white);
     font-family: var(--zen);
 }
@@ -61,4 +64,10 @@
 
 .iconLink {
     height: 30px;
+}
+
+#icon {
+    margin-right: 3px;
+    font-size: 150%;
+color: var(--tert-light-clr);
 }

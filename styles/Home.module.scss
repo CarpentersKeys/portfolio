@@ -1,12 +1,11 @@
-#intro {}
-
 #intro p {
   line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
 .name {
-  font-family: unset;
-  // font-family: var(--spartan);
+  font-size: 1rem;
 }
 
 .name span {
@@ -14,15 +13,21 @@
   font-size: 1.6rem;
 }
 
+#intro {
+  max-width: 845.091px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+@media (min-width: 1182px) {
+  #intro {
+    margin: 0 70px;
+  }
+}
+
 #intro h2 {
-  // font-family: var(--spartan);
+  font-family: var(--spartan);
   font-size: 2rem;
-}
-
-#contact {
-  background-color: var(--sec-light-clr);
-}
-
-#contact section {
-  width: 100%;
+  padding: 0;
+  margin: 1rem 0;
 }

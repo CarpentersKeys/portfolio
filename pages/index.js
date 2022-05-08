@@ -15,9 +15,8 @@ export default function Home() {
         </p>
       </section>
 
-      <footer id={styles.contact}>
-        <Contact />
-      </footer>
+      {/* <footer id={styles.contact}> */}
+      {/* </footer> */}
     </div>
   )
 }

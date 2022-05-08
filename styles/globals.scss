@@ -1,10 +1,11 @@
 :root {
   --black: #16131d;
-  --sec-clr: #4b945c;
+  --sec-clr: #4b945ca5;
   --sec-light-clr: #badec3;
   --prim-clr: #e09346;
   --tert-clr: #473594;
   --tert-light-clr: #a294e0;
+  --tert-transp-clr: #a294e028;
   --white: #f7f8fa;
   --font-size: 1.5rem;
   --spartan: "League Spartan", sans-serif;
@@ -16,6 +17,7 @@
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -23,6 +25,7 @@ html {
 }
 
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: var(--zen);
@@ -31,15 +34,18 @@ body {
   color: var(--white);
   font-size: var(--font-size);
 }
+
 h1,
 h2,
 h3 {
   margin: 0;
 }
+
 a {
   color: var(--tert-light-clr);
   text-decoration: underline;
 }
+
 a:hover {
   text-decoration: none;
 }

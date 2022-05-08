@@ -4,8 +4,9 @@ import '../styles/globals.scss'
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <Layout />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </div>
   )
 }

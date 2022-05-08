@@ -3,11 +3,11 @@
     width: 100%;
     font-family: var(--spartan);
     justify-content: center;
-    margin-top: 3vh;
-    margin-bottom: 7vh;
+    margin-left: 3rem;
 }
 
 #layout #mainUl ul {
+    margin-top: 2vh;
     justify-content: right;
 }
 
@@ -27,10 +27,18 @@
     color: var(--prim-clr);
 }
 
-#layout a:hover,
-#layout h1:hover {
-    color: var(--tert-light-clr);
+#icon {
+    margin-right: 3px;
+    font-size: 150%;
+    color: var(--prim-clr);
 }
+
+#layout a:hover {
+    color: var(--tert-light-clr);
+    background-color: var(--tert-transp-clr);
+    border-radius: 3rem;
+}
+
 
 #layout nav li:first-child {
     text-align: right;
@@ -46,7 +54,7 @@
 
 #offsiteUl ul {
     display: flex;
-    place-content:center;
+    place-content: center;
     height: 100%;
 }
 
@@ -66,8 +74,22 @@
     height: 30px;
 }
 
-#icon {
-    margin-right: 3px;
-    font-size: 150%;
-color: var(--tert-light-clr);
+
+@media(min-width: 1182px) {
+    #layout nav li:first-child {
+        text-align: right;
+        flex-basis: auto;
+        margin-right: auto;
+    }
+
+    #layout nav li h1 {
+
+        margin-left: 40px;
+    }
+    #layout nav {
+    margin-left: 0rem;
 }
+}
+#footer {
+    overflow: hidden;
+} 

@@ -1,4 +1,6 @@
 import styles from '../styles/Contact.module.scss';
+import { GrMail } from 'react-icons/gr'
+import { FaDiscord } from 'react-icons/fa'
 
 export default function Contact() {
     return (
@@ -7,9 +9,16 @@ export default function Contact() {
                 <h2>Inquiries</h2>
                 <p>I&apos;m seeking employment, training, and peers in web technologies. Particularly using javascript, react, and nextjs.</p>
             </div>
+                <div id={styles.topGrad}></div>
             <div id={styles.iconsCont}>
-                <p className={styles.contact}>Here&apos;s my <a href='mailto:joneilltechnical@gmail.coma'>email</a>.</p>
-                <p className={styles.contact}>Just want to <a href='https://discordapp.com/users/Wheelwright#7659'>chat</a>?</p>
+                <div>
+                    <p id={styles.iconText}>Here&apos;s my email.</p>
+                    <a href='mailto:joneilltechnical@gmail.coma'><GrMail /></a>
+                </div>
+                <div>
+                    <p id={styles.iconText}>Just want to chat?</p>
+                    <a href='https://discordapp.com/users/Wheelwright#7659'><FaDiscord /></a>
+                </div>
             </div>
         </section>
     )

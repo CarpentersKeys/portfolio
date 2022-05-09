@@ -1,4 +1,3 @@
-import Contact from '../components/Contact';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
@@ -14,9 +13,6 @@ export default function Home() {
           Currently I&apos;m developing some portfolio <a href="https://rememblance.vercel.app/">projects</a> based on my interests.
         </p>
       </section>
-
-      {/* <footer id={styles.contact}> */}
-      {/* </footer> */}
     </div>
   )
 }

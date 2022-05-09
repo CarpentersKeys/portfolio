@@ -93,3 +93,21 @@
 #footer {
     overflow: hidden;
 } 
+
+#spacerBot {
+    min-height: 1px;
+    position: relative;
+    top: 0;
+    height: auto;
+}
+
+#topGrad {
+    min-height: 3px;
+    background: var(--grad-tert-dark-light);
+}
+#botGrad {
+    min-height: 3px;
+    background: var(--grad-tert-light-dark);
+    margin: 0%;
+    padding: 0%;
+}

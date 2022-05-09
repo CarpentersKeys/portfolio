@@ -37,10 +37,13 @@ export default function Layout({ children, pageTitle }) {
                     </div>
                 </nav >
             </div >
+            <div id={styles.topGrad}></div>
             {children}
+            <div id={styles.botGrad}></div>
             <footer id={styles.footer}>
                 <Contact />
             </footer>
+            <div id={styles.spacerBot}></div>
         </div>
     )
 }

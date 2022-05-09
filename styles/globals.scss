@@ -10,6 +10,9 @@
   --font-size: 1.5rem;
   --spartan: "League Spartan", sans-serif;
   --zen: "Zen Maru Gothic", sans-serif;
+  --grad-tert-light-dark: linear-gradient(90deg, rgba(162,148,224,1) 33%, rgba(71,53,148,1) 100%);
+  --grad-tert-dark-light: linear-gradient(90deg, rgba(71,53,148,1) 33%, rgba(162,148,224,1) 100%);
+  --grad-prim-light-tert-dark: linear-gradient(90deg, rgba(224,147,70,1) 33%, rgba(71,53,148,1) 100%);
 }
 
 /* border box model: https://css-tricks.com/box-sizing/ */

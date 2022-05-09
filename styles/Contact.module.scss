@@ -1,15 +1,16 @@
 #contact {
   overflow: hidden;
+  margin-top: 16px;
   font-size: 1.3rem;
+  margin-top: 0;
   width: 100%;
-  color: var(--prim-clr);
 }
 
 #textCont {
   margin: 0 0;
   padding: 0%;
   background-color: var(--sec-clr);
-  padding: 0.5rem;
+  padding: 3rem;
 }
 #textCont h2 {
   font-family: var(--spartan);
@@ -27,9 +28,34 @@
 }
 
 #iconsCont {
-  // background-color: var(--black);
-  // display: flex;
-  // width: 100%;
-  // margin: 0 auto;
-  // text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#iconsCont div {
+  width: fit-content;
+  margin: 10px 30px;
+  height: fit-content;
+  text-align: center;
+}
+
+#iconsCont p {
+  font-family: var(--spartan);
+  color: var(--white);
+}
+
+#iconsCont div a {
+    margin-top: 0;
+    margin-right: 3px;
+    font-size: 150%;
+    color: var(--prim-clr);
+}
+
+#iconsCont div a:hover {
+    color: var(--tert-light-clr);
+}
+
+#topGrad {
+    min-height: 3px;
+    background: var(--grad-tert-dark-light);
 }

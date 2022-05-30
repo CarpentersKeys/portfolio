@@ -1,102 +1,60 @@
 import Image from 'next/image';
+import { githubGrapqlQueryString } from '../../lib/githubGraphqlQueryString';
+import graphqlFetch from '../../lib/graphqlFetch';
 import styles from '../../styles/Projects.module.scss'
-// import { JSDOM } from 'jsdom';
 
 export async function getStaticProps() {
 
-    // fetch logic
+    const repos = await graphqlFetch({ query: githubGrapqlQueryString });
+    const portfolioReposDetails = repos.data.viewer.repositories.nodes;
 
-    // get repos from github
-    fetch('https://api.github.com/users/CarpentersKeys/repos')
-        // check to make sure response ok and json
-        .then(resp => {
-            return resp.ok && resp.headers.get('Content-Type').includes('application/json') && resp.json()
-                || new Error(`github fetch error status: \n${resp.status}\n${resp.headers.get('Content-Type')}`)
-        })
-        .catch(err => err)
-        // filter repos without 'portfolio' topic
-        // map over repos
-        // make fetch for languages, and html preview image
-        // format into rep
-        // format all repos into {props: ...}
-        .then(repos => repos.filter(e => e.topics.includes('portfolio')))
-        .then(repos => (
-            repos.map(async (repo, i) => {
-                // const languages = await fetch(repo.languages_url)
-                // JSDOM.fromUrl(repo.html_url.contentType)
-                    // .then(result => console.log(result))
-                    console.log(repos[0]);
-
-            })
-        ))
-    // .then(async json => {
-    //     return Promise.all(
-    //         json.map(repo => {
-    //             return {
-    //                 languages: fetch(repo.languages_url),
-    //                 previewImg: fetch(repo.html_url)
-    //             }
-
-    //         })
-    //     )
-    //         .then(respArr => (Promise.all(respArr.map((resp) => resp.json()))))
-    //         .then(langs => {
-    //             const repos = json
-    //                 .filter(e => e.topics.includes('portfolio'))
-    //                 .map((e, i) => {
-    //                     return {
-    //                         ...e,
-    //                         languages: langs[i]
-    //                     }
-    //                 })
-    //             return {
-    //                 props: {
-    //                     repos
-    //                 }
-    //             };
-    //         })
-    // })
-    return {props: 'aerg'};
+    return { props: { portfolioReposDetails } }
 }
 
 
-export default function Projects({ repos }) {
+export default function Projects({ portfolioReposDetails }) {
 
     return (
         <div className={styles.background}>
-            {/* <section className={styles.projects}>
+            <section className={styles.projects}>
                 <h2>projects</h2>
 
                 {
-                    repos.map((repo, ind) => (
+                    portfolioReposDetails.map((repo, ind) => (
+                        // style as card links to porject page
                         <article id={styles.firstProj} key={ind}>
                             <h4>{
-                                repo.homepage !== '' && <a target='_blank' rel='noopener noreferrer' href={repo.homepage}>deployed</a>
-                                || <a target='_blank' rel='noopener noreferrer' href={repo.html_url}>in progress</a>
+                                // style as button top right
+                                repo.homepageUrl !== '' && <a target='_blank' rel='noopener noreferrer' href={repo.homepageUrl}>production</a>
+                                || <a target='_blank' rel='noopener noreferrer' href={repo.url}>development</a>
                             }</h4>
+                            {/* style text top left */}
                             <h3>{repo.name}</h3>
-                            <p>{repo.description}</p>
+                            {/* may conditionally render if no deployment */}
+                            {/* <p>{repo.description}</p> */}
                             <div id={styles.techCont}>
                                 <div id={styles.techUl}>
                                     <ul>
                                         {
-                                            Object.keys(repo.languages).map((e, i) => <li key={e + i}>{e}</li>)
+                                            repo.languages.nodes.map((e, i) => <li key={e + i}>{e.name}</li>)
                                                 .concat(
-                                                    repo.topics.filter(e => e !== 'portfolio')
-                                                        .map((e, i) => <li key={e + i}>{e}</li>)
+                                                    repo.repositoryTopics.nodes
+                                                        .filter(e => e.name !== 'portfolio')
+                                                        .map((e, i) => <li key={e + i}>{e.topic.name}</li>)
                                                 ).slice(0, 5)
                                         }
                                     </ul>
                                 </div>
                             </div>
                             <div id={styles.imageCont}>
-                                <Image id={styles.art} src='/white-center.jpg' width='156' height='131px' alt='art' />
+                                <Image id={styles.art} src={repo.openGraphImageUrl} width='156' height='131px' alt='art' />
+                                {/* <Image width='156' height='131px' alt='art' src='https://commons.wikimedia.org/wiki/File:Robert_Delaunay,_1913,_Premier_Disque,_134_cm,_52.7_inches,_Private_collection.jpg#/media/File:Robert_Delaunay,_1913,_Premier_Disque,_134_cm,_52.7_inches,_Private_collection.jpg' /> */}
                             </div>
                         </article>
                     ))
                 }
 
-            </section> */}
+            </section>
         </div>
     )
 }

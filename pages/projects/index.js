@@ -1,12 +1,13 @@
 import Image from 'next/image';
-import { githubGrapqlQueryString } from '../../lib/githubGraphqlQueryString';
+import { githubReposQuery as query } from '../../lib/queryStrings';
 import graphqlFetch from '../../lib/graphqlFetch';
 import styles from '../../styles/Projects.module.scss'
 
 export async function getStaticProps() {
 
-    const repos = await graphqlFetch({ query: githubGrapqlQueryString });
+    const repos = await graphqlFetch({ query });
     const portfolioReposDetails = repos.data.viewer.repositories.nodes;
+    console.log('index')
 
     return { props: { portfolioReposDetails } }
 }

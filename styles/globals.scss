@@ -13,6 +13,7 @@
   --grad-tert-light-dark: linear-gradient(90deg, rgba(162,148,224,1) 33%, rgba(71,53,148,1) 100%);
   --grad-tert-dark-light: linear-gradient(90deg, rgba(71,53,148,1) 33%, rgba(162,148,224,1) 100%);
   --grad-prim-light-tert-dark: linear-gradient(90deg, rgba(224,147,70,1) 33%, rgba(71,53,148,1) 100%);
+  --nav-breakpoint: 1182px;
 }
 
 /* border box model: https://css-tricks.com/box-sizing/ */
@@ -51,10 +52,4 @@ a {
 
 a:hover {
   text-decoration: none;
-}
-
-.divider {
-  margin: 14px;
-  min-width: 4px;
-  background-color: var(--white);
 }

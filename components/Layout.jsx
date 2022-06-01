@@ -23,7 +23,7 @@ export default function Layout({ children, pageTitle }) {
                             <li><Link href='/contact'>contact</Link></li><div>()</div>
                         </ul>
                     </div>
-                    <div className='divider' id={styles.bar}><div style={{ height: '50%', backgroundColor: 'var(--prim-clr)', width: '3px' }}></div> </div>
+                    <div className={styles.divider} ><div style={{ height: '50%', backgroundColor: 'var(--prim-clr)', width: '3px' }}></div> </div>
                     <div id={styles.offsiteUl}>
                         <ul>
                             <li>

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <section id={styles.intro}>
-        <p className={styles.name}>Hi, I&apos;m<span> Joshua </span>(he/him).</p>
+        <p className={styles.greeting}>Hi, I&apos;m<span> Joshua </span>(he/him).</p>
 
         <h2>I make web apps.</h2>
 

@@ -3,7 +3,7 @@
     width: 100%;
     font-family: var(--spartan);
     justify-content: center;
-    margin-left: 3rem;
+    // margin-left: 3rem;
 }
 
 #layout #mainUl ul {
@@ -12,12 +12,16 @@
 }
 
 #layout nav ul {
-    width: 50vw;
     padding: 0;
     margin: 0;
     display: flex;
     flex-flow: row wrap;
     list-style-type: none;
+}
+
+#mainUl,
+#offsiteUl {
+    flex-basis: 50%;
 }
 
 #layout a {
@@ -52,7 +56,14 @@
     font-family: var(--zen);
 }
 
+#offsiteUl {
+    margin: 0;
+    padding: 0;
+}
+
 #offsiteUl ul {
+    margin: 0;
+    padding: 0;
     display: flex;
     place-content: center;
     height: 100%;
@@ -75,7 +86,7 @@
 }
 
 
-@media(min-width: 1182px) {
+@media(min-width: 1240px) {
     #layout nav li:first-child {
         text-align: right;
         flex-basis: auto;
@@ -86,13 +97,15 @@
 
         margin-left: 40px;
     }
+
     #layout nav {
-    margin-left: 0rem;
+        margin-left: 0;
+    }
 }
-}
+
 #footer {
     overflow: hidden;
-} 
+}
 
 #spacerBot {
     min-height: 1px;
@@ -105,9 +118,16 @@
     min-height: 3px;
     background: var(--grad-tert-dark-light);
 }
+
 #botGrad {
     min-height: 3px;
     background: var(--grad-tert-light-dark);
     margin: 0%;
     padding: 0%;
+}
+
+.divider {
+    margin: 14px;
+    min-width: 4px;
+    background-color: var(--white);
 }

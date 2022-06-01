@@ -1,6 +1,9 @@
 .background {
     background-color: var(--tert-clr);
 }
+.projectCard:hover {
+    background-color: var(--tert-light-clr);
+}
 
 #imageCont {
     // display: inline-block;

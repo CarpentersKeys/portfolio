@@ -1,28 +1,21 @@
-#intro p {
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-}
-
-.name {
-  font-size: 1rem;
-}
-
-.name span {
-  // font-family: var(--zen);
-  font-size: 1.6rem;
-}
-
 #intro {
   max-width: 845.091px;
   margin: 0 auto;
   padding: 3rem;
 }
 
-@media (min-width: 1182px) {
-  #intro {
-    margin: 0 70px;
-  }
+#intro p {
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.greeting {
+  font-size: 1rem;
+}
+
+.greeting span {
+  font-size: 1.6rem;
 }
 
 #intro h2 {
@@ -30,4 +23,10 @@
   font-size: 2rem;
   padding: 0;
   margin: 1rem 0;
+}
+
+@media (min-width: 1240px) {
+  #intro {
+    margin: 0 70px;
+  }
 }

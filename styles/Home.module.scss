@@ -1,8 +1,16 @@
 #intro {
   max-width: 845.091px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2rem;
 }
+
+#contentCard {
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--tert-transp-clr);
+  border-radius: 1rem;
+}
+
 
 #intro p {
   line-height: 1.5;

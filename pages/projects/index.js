@@ -51,6 +51,18 @@ export default function Projects({ portfolioReposDetails }) {
                                     </div>
                                     <div id={styles.imageCont}>
                                         <Image id={styles.art} src={repo.openGraphImageUrl} width='156' height='131px' alt='art' />
+                                                {/* probably what I need here  */}
+                                        {/* <Image
+                                            alt='repository image'
+                                            className={styles.image}
+                                            // maybe format images to be wide bannerlike things with a couple items on them
+                                            src={imageUrl}
+                                            // width='317px' height='317px'
+                                            layout="fill"
+                                            priority
+                                            objectFit="none"
+                                            objectPosition='center'
+                                        /> */}
                                     </div>
                                 </article>
                             </a>

@@ -7,7 +7,7 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'repository-images.githubusercontent.com'
     ],
-  }
+  },
 }
 
 export default nextConfig;

@@ -1,8 +1,111 @@
-.background {
+#projects {
+    padding: 0;
+    margin: 0;
+    flex-basis: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#mainSection {
+    padding: 0rem;
+}
+
+#mainSection main {
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100vw;
+    justify-content: space-between;
+}
+
+
+.projectCard {
+    display: flex;
+    flex-direction: row;
+    max-width: 38vw;
+    flex-basis: 50vw;
+    max-height: 359px;
+    background-color: var(--tert-clr);
+    // background-color: red;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.projectCard:hover {
+    background-color: var(--tert-transp-clr);
+}
+
+.left {
+    flex-basis: 50vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#header {
+    font-size: 1rem;
+}
+
+.offsiteLinks h4 {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+.offsiteLinks {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    font-size: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.linkDivider {
+    margin: 0 .3rem;
+}
+
+#title {
+    font-family: var(--spartan);
+    font-size: 2rem;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+#statusButton {
+    margin-bottom: 1rem;
     background-color: var(--tert-clr);
 }
-.projectCard:hover {
-    background-color: var(--tert-light-clr);
+
+#statusButton h5 {
+    margin: 0;
+}
+
+// card
+#projects p {
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+
+.linkDivider {
+    margin: 0 .3rem;
+}
+
+#statusButton h5,
+#statusButton span {
+    display: inline;
+    font-weight: 100;
+    margin: 0px;
+    padding: 0;
+    color: var(--white);
+    font-size: 1rem;
 }
 
 #imageCont {
@@ -12,4 +115,108 @@
     padding: 0;
     margin: 0;
     background-color: red;
+}
+
+#header {
+    font-size: 1rem;
+}
+
+.offsiteLinks {
+    font-size: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.linkDivider {
+    margin: 0 .3rem;
+}
+
+#title {
+    font-family: var(--spartan);
+    font-size: 2rem;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.description {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.tagsCard ul {
+    display: inline-flex;
+    font-size: 1rem;
+    list-style: none;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.tagsCard {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    // max-height: 33%;
+    position: relative;
+    background-color: var(--tert-transp-clr);
+    border-radius: 1rem;
+    max-width: 38vw;
+    flex-basis: 33vw;
+}
+
+.right {
+    align-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    max-width: 38vw;
+    flex-basis: 50vw;
+    padding: 1rem;
+    background-color: var(--tert-transp-clr);
+    border-radius: 1rem;
+    // background-color: green;
+}
+
+.imageCard {
+    position: relative;
+    height: stretch;
+}
+
+@media (min-width: 1240px) {
+    #mainSection main {
+        margin: 0 70px;
+    }
+
+    #mainSection main {
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-basis: 100vw;
+        justify-content: space-between;
+    }
+
+    // don't squash last push
+    #statusButton {
+        display: flex;
+        flex-direction: column;
+        flex-basis: fit-content;
+        height: auto;
+        min-width: 115px;
+        place-content: center;
+        margin: .6rem;
+        padding: .5rem;
+        background-color: var(--tert-clr);
+        border-radius: 1rem;
+    }
+}
+
+@media (max-width: 705px) {
+    #mainSection main {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        max-width: 100vw;
+        margin-bottom: 2rem;
+    }
 }

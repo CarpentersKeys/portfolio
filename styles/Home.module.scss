@@ -11,12 +11,14 @@
   border-radius: 1rem;
 }
 
-
 #intro p {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  text-overflow: ellipsis;
 }
+
+
 
 .greeting {
   font-size: 1rem;

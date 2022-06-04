@@ -6,6 +6,37 @@ import spreadStringsOverRowsByChars from "../../lib/spreadStringsOverRowsByChars
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 
+// server build
+export async function getStaticPaths() {
+    const repos = await graphqlFetch({ query });
+    const portfolioReposDetails = repos.data.viewer.repositories.nodes;
+    const { name, ...repoDetails } = portfolioReposDetails[0];
+    console.log('name:', name, 'det', repoDetails);
+
+    return {
+        paths: portfolioReposDetails.map(({ name, ...repoDetails }) => ({
+            params: {
+                name,
+                repoDetails,
+            },
+        })),
+        fallback: false,
+    }
+}
+
+// server build and revalidate(every 30min)
+export async function getStaticProps({ params: { name } }) {
+    const repos = await graphqlFetch({ query });
+    // fix this aweful query
+    const props = repos.data.viewer.repositories.nodes.filter(repo => repo.name === name)[0];
+
+    return {
+        props,
+        revalidate: 30 * 60,
+    }
+}
+
+// client
 export default function Project({
     name,
     homepageUrl,
@@ -127,32 +158,3 @@ export default function Project({
     )
 }
 
-
-export async function getStaticPaths() {
-    const repos = await graphqlFetch({ query });
-    const portfolioReposDetails = repos.data.viewer.repositories.nodes;
-    const { name, ...repoDetails } = portfolioReposDetails[0];
-    console.log('name:', name, 'det', repoDetails);
-
-    return {
-        paths: portfolioReposDetails.map(({ name, ...repoDetails }) => ({
-            params: {
-                name,
-                repoDetails,
-            },
-        })),
-        fallback: false,
-    }
-}
-
-export async function getStaticProps({ params: { name } }) {
-    const repos = await graphqlFetch({ query });
-    // fix this aweful query
-    const props = repos.data.viewer.repositories.nodes.filter(repo => repo.name === name)[0];
-    console.log('props', props)
-
-    return {
-        props,
-        revalidate: 30 * 60,
-    }
-}

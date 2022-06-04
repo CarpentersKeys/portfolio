@@ -1,10 +1,10 @@
-export async function getStaticProps() {
+// export async function getStaticProps() {
 
-}
+// }
 
 
 
 export default function Resume() {
 
-    return <div><p>awef</p></div>
+    return <div><p>Resume</p></div>
 }

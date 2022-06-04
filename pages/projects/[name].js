@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 // server build
 export async function getStaticPaths() {
     const repos = await graphqlFetch({ query });
+    console.log(repos)
     const portfolioReposDetails = repos.data.viewer.repositories.nodes;
     const { name, ...repoDetails } = portfolioReposDetails[0];
-    console.log('name:', name, 'det', repoDetails);
 
     return {
         paths: portfolioReposDetails.map(({ name, ...repoDetails }) => ({
@@ -70,18 +70,14 @@ export default function Project({
     useEffect(() => {
         if (window) {
             if (isLargeBrowser) {
-            console.log('lirg')
                 maxRowCharsSet(100);
             } else if (isMediumBrowser) {
-                console.log('med')
                 maxRowCharsSet(80);
             } else {
-                console.log('sm')
                 maxRowCharsSet('incremental-static-regeneration'.length);
             };
         }
     }, [isLargeBrowser, isMediumBrowser]);
-    console.log('tags', tags.length)
 
     return (
         <div id={styles.project}>

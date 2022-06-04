@@ -25,7 +25,7 @@ export async function getStaticProps() {
                     .map(obj => obj.topic.name)
                     .filter(e => e !== 'portfolio')
             )
-        const description = repo.description.slice(0, 30).concat('..');
+        const description = repo.description?.slice(0, 30).concat('..');
         return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics };
     })
 

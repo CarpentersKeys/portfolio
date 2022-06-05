@@ -82,9 +82,9 @@ export default function Projects({ repos }) {
                                                     </a>
                                                 </span>
                                                 <h3 id={styles.title}>{name}</h3>
+                                                <p className={styles.description}>{description}</p>
                                             </div>
                                             {/* may conditionally render if no deployment */}
-                                            <p className={styles.description}>{description}</p>
                                             <div className={styles.tagsCard}>
                                                 <ul>
                                                     {

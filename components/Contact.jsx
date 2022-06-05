@@ -1,4 +1,4 @@
-import styles from '../styles/Contact.module.scss';
+import styles from './Contact.module.scss';
 import { GrMail } from 'react-icons/gr'
 import { FaDiscord } from 'react-icons/fa'
 

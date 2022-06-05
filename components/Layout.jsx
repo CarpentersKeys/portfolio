@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import styles from '../styles/Layout.module.scss';
+import styles from './Layout.module.scss';
 import { AiFillGithub, } from 'react-icons/ai';
 import { WiSunset } from 'react-icons/wi';
 import Contact from './Contact';

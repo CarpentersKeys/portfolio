@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { githubReposQuery as query } from '../../lib/queryStrings';
 import graphqlFetch from '../../lib/graphqlFetch';
-import styles from '../../styles/Projects.module.scss'
+import styles from './index.module.scss'
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 

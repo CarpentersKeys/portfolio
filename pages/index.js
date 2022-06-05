@@ -1,6 +1,6 @@
-import styles from '../styles/Home.module.scss';
+import styles from './index.module.scss';
 
-export default function Home() {
+export default function Index() {
 
   return (
     <div>

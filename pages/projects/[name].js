@@ -1,6 +1,6 @@
 import graphqlFetch from "../../lib/graphqlFetch";
 import { githubReposQuery as query } from "../../lib/queryStrings";
-import styles from '../../styles/Project.module.scss';
+import styles from './[name].module.scss';
 import Image from 'next/image';
 import spreadStringsOverRowsByChars from "../../lib/spreadStringsOverRowsByChars";
 import useMediaQuery from "../../hooks/useMediaQuery";

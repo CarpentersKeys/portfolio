@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 // server build
 export async function getStaticPaths() {
     const repos = await graphqlFetch({ query });
-    console.log(repos)
     const portfolioReposDetails = repos.data.viewer.repositories.nodes;
     const { name, ...repoDetails } = portfolioReposDetails[0];
 

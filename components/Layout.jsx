@@ -18,7 +18,7 @@ export default function Layout({ children, pageTitle }) {
                         <ul>
                             <li><h1><Link href='/'><a><WiSunset id={styles.icon} />Joshua</a></Link></h1></li>
                             <li><Link href='/projects'>projects</Link></li><div>.</div>
-                            <li><Link href='/resume'>resume</Link></li><div>.</div>
+                            <li><Link href='https://resume.io/r/srFhKDi7i' target='_blank' rel='noreferrer'>resume</Link></li><div>.</div>
                             <li><Link href='/about'>about</Link></li><div>.</div>
                             <li><Link href='/contact'>contact</Link></li><div>()</div>
                         </ul>

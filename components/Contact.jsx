@@ -7,7 +7,7 @@ export default function Contact() {
         <section id={styles.contact}>
             <div id={styles.textCont}>
                 <h2>Inquiries</h2>
-                <p>I&apos;m seeking employment, training, and peers in web technologies. Particularly using javascript, react, and nextjs.</p>
+                <p>I&apos;m seeking employment, mentorship, and peers in web technologies. Particularly using javascript, react, and nextjs.</p>
             </div>
                 <div id={styles.topGrad}></div>
             <div id={styles.iconsCont}>

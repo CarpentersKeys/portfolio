@@ -6,5 +6,5 @@
 
 export default function Resume() {
 
-    return <div><p>Resume</p></div>
+    return <div><p></p></div>
 }

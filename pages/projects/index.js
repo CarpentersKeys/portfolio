@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { githubReposQuery as query } from '../../lib/queryStrings';
 import graphqlFetch from '../../lib/graphqlFetch';
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export async function getStaticProps() {
 
@@ -19,103 +20,122 @@ export async function getStaticProps() {
             languages,
             repositoryTopics
         } = repo;
-        const topics = languages.nodes.map(lang => lang.name)
+        const tags = languages.nodes.map(lang => lang.name)
             .concat(
                 repositoryTopics.nodes
                     .map(obj => obj.topic.name)
                     .filter(e => e !== 'portfolio')
-            )
+            );
         const description = repo.description?.slice(0, 30).concat('..');
-        return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics };
-    })
+        return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, tags };
+    });
 
     return {
         props: { repos, },
         revalidate: 60 * 30,
-    }
-}
+    };
+};
 
+const newTagsMap = (arr) => (
+    // maps over an array of objects
+    // returns array of string arrays(tags)
+    arr.map(repo => (
+        repo?.tags
+            .slice()
+            .sort(() => Math.random() - .5)
+            .slice(0, 3)
+    ))
+);
+
+Projects.propTypes = {
+    repos: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string,
+            homepageUrl: PropTypes.string,
+            githubUrl: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string.isRequired, // this defaults to profile image so if it's missing there's a problem
+            description: PropTypes.string,
+            lastPushAt: PropTypes.string,
+            topics: PropTypes.array,
+        })
+    ),
+};
 
 export default function Projects({ repos }) {
-    const [reposState, reposStateSet] = useState(repos);
+    const [tagsDisplay, tagsDisplaySet] = useState(null);
 
-
+    // initial and interval setting of the tagsDisplay for project cards
     useEffect(() => {
-        const topicsTimer = setTimeout(() => reposStateSet((prev) => (
+        if (!tagsDisplay) { tagsDisplaySet(newTagsMap(repos)); };
 
-            prev.map(repo => {
-                const { topics, ...rest } = repo;
-                const newTopics = topics.slice()
-                    .sort(() => Math.random() - .5)
-                    .slice(0, 5);
-
-                return { topics: newTopics, ...rest };
-            })
-        )
-
-        ), 6000);
+        const topicsTimer = setTimeout(() => {
+            tagsDisplaySet(() => newTagsMap(repos))
+        }, 3000);
 
         return () => { clearTimeout(topicsTimer); };
-    }, [repos])
+    }, [repos, tagsDisplay]);
 
     return (
         <div id={styles.projects}>
             <section id={styles.mainSection}>
                 <main>
-                    {
-                        reposState.map((repo, i) => {
-                            const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics } = repo;
+                    <ul className={styles.mainUl}>
+                        {
+                            repos && repos.map((repo, i) => {
+                                const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics } = repo;
 
-                            return (
-                                <Link href={`/projects/${name}`} key={i + 'i'}>
-                                    <div className={styles.projectCard} >
-                                        {/* style text top left */}
-                                        <div className={styles.left}>
-                                            <div id={styles.header}>
-                                                <span className={styles.offsiteLinks}>
-                                                    <h4>status</h4>
-                                                    <span className={styles.linkDivider}>|</span>
-                                                    <a
-                                                        target='_blank' rel='noreferrer'
-                                                        href={homepageUrl || githubUrl}>
-                                                        {homepageUrl ? 'production' : 'development'}
-                                                    </a>
-                                                </span>
-                                                <h3 id={styles.title}>{name}</h3>
-                                                <p className={styles.description}>{description}</p>
+                                return (
+                                    <li className={styles.projectLi} key={i + 'i'}>
+                                        {/* <Link href={`/projects/${name}`} > */}
+                                        <div className={styles.projectCard} >
+                                            <div className={styles.top}>
+                                                <div className={styles.imageCard}>
+                                                    {/* probably what I need here  */}
+                                                    image && <Image
+                                                        alt='repository image'
+                                                        className={styles.image}
+                                                        // maybe format images to be wide bannerlike things with a couple items on them
+                                                        src={imageUrl}
+                                                        layout='fill'
+                                                        priority
+                                                        objectFit="cover"
+                                                        objectPosition='center'
+                                                    />
+                                                </div>
                                             </div>
-                                            {/* may conditionally render if no deployment */}
-                                            <div className={styles.tagsCard}>
-                                                <ul>
-                                                    {
-                                                        topics.map((e, k) => <li key={k + 'ijk'}>{'#' + e + ' '}</li>)
-                                                    }
-                                                </ul>
+                                            {/* style text top left */}
+                                            <div className={styles.bottom}>
+                                                <div id={styles.header}>
+                                                    <span className={styles.offsiteLinks}>
+                                                        <h4>status</h4>
+                                                        <span className={styles.linkDivider}>|</span>
+                                                        <a
+                                                            target='_blank' rel='noreferrer'
+                                                            href={homepageUrl || githubUrl}>
+                                                            {homepageUrl ? 'production' : 'development'}
+                                                        </a>
+                                                    </span>
+                                                    <h3 id={styles.title}>{name}</h3>
+                                                    <p className={styles.description}>{description}</p>
+                                                </div>
+                                                {/* may conditionally render if no deployment */}
+                                                <div className={styles.tagsCard}>
+                                                    <ul>
+                                                        {
+                                                            tagsDisplay?.[i] && tagsDisplay[i].map((e, k) => <li key={k + 'ijk'}>{'#' + e + ' '}</li>)
+                                                        }
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className={styles.right}>
-                                            <div className={styles.imageCard}>
-                                                {/* probably what I need here  */}
-                                                <Image
-                                                    alt='repository image'
-                                                    className={styles.image}
-                                                    // maybe format images to be wide bannerlike things with a couple items on them
-                                                    src={imageUrl}
-                                                    // width='317px' height='317px'
-                                                    layout="fill"
-                                                    priority
-                                                    objectFit="contain"
-                                                    objectPosition='center'
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            )
-                        })
-                    }
+                                        {/* </Link> */}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
                 </main>
             </section>
         </div >
-    )
-}
+    );
+};

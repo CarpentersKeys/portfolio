@@ -10,28 +10,35 @@
     padding: 0rem;
 }
 
-#mainSection main {
+#mainSection .mainUl {
+    list-style-type: none;
     margin: 0;
     padding: 2rem;
     display: flex;
-    flex-direction: row;
+    // flex-direction: column;
     flex-basis: 100vw;
     justify-content: space-between;
 }
 
-.projectCard {
-    display: flex;
-    flex-direction: row;
+.projectLi {
     max-width: 38vw;
-    flex-basis: 50vw;
-    max-height: 359px;
+    height: 359px;
     // background-color: red;
     padding: 1rem;
     border-radius: 1rem;
     background-color: var(--black);
     border-width: 1px;
     border-style: groove;
-    border-color: var(--tert-light-clr)
+    border-color: var(--tert-light-clr);
+    display: flex;
+    // flex-direction: column;
+    flex-basis: 50vw;
+}
+
+.projectCard {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50vw;
 }
 
 .projectCard:hover {
@@ -39,7 +46,7 @@
     border-color: var(--tert-transp-clr)
 }
 
-.left {
+.bottom {
     flex-basis: 50vw;
     display: flex;
     flex-direction: column;
@@ -68,8 +75,10 @@
     font-size: 1.6rem;
     display: flex;
     flex-wrap: wrap;
+    float: inline-start;
 }
 
+.offsiteLinks a {}
 
 .linkDivider {
     margin: 0 .3rem;
@@ -150,7 +159,7 @@
 }
 
 .tagsCard {
-    margin-top: 1rem;
+    margin-top: auto;
     margin-right: 1rem;
     // max-height: 33%;
     position: relative;
@@ -184,7 +193,7 @@
     border-radius: 1rem;
 }
 
-.right {
+.top {
     align-content: flex-end;
     display: flex;
     flex-direction: column;
@@ -202,11 +211,11 @@
 }
 
 @media (min-width: 1240px) {
-    #mainSection main {
+    #mainSection .mainUl {
         margin: 0 70px;
     }
 
-    #mainSection main {
+    #mainSection .mainUl {
         padding: 2rem;
         display: flex;
         flex-direction: row;
@@ -234,8 +243,8 @@
         flex-direction: column;
     }
 
-    .left,
-    .right {
+    .bottom,
+    .top {
         max-width: 100vw;
         margin-bottom: 2rem;
     }

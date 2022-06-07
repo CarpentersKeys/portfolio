@@ -1,3 +1,15 @@
+.wholeView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.top,
+.footer {
+    flex-basis: 50vh; 
+}
+
 #layout nav {
     display: flex;
     width: 100%;
@@ -104,7 +116,9 @@
 }
 
 #footer {
-    overflow: hidden;
+    // overflow: hidden;
+    // position: relative;
+    // flex-basis: 100%;
 }
 
 #spacerBot {

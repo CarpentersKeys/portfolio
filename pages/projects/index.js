@@ -5,19 +5,21 @@ import styles from './index.module.scss';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
+export default function Projects({ repos }) {
     const [tagsDisplay, tagsDisplaySet] = useState(null);
+    const [offsiteLinkClicked, offsiteLinkClickedSet] = useState(false);
+    const [mouseShortClick, mouseShortClickSet] = useState(false);
     const [charLength, charLengthSet] = useState(18);
+    const router = useRouter();
 
     // context pls
     const isLargeBrowser = useMediaQuery('(min-width: 1240px)');
     const isMediumBrowser = useMediaQuery('(min-width: 768px)');
 
-    return {
-        props: { repos, },
-        revalidate: 60 * 30,
-    };
-};
+    useEffect(() => { console.log(charLength) }, [charLength])
 
     useEffect(() => {
         charLengthSet(
@@ -36,7 +38,34 @@ import PropTypes from 'prop-types';
         }, 300);
 
         return () => { clearTimeout(topicsTimer); };
-    }, [repos, tagsDisplay]);
+    }, [repos, tagsDisplay, charLength]);
+
+    // 'release' mouseShortClick to avoid linking from cards on highlight clicks
+    // reset the offsiteLinkClicked as well
+    useEffect(() => {
+        let mouseTimer;
+
+        if (mouseShortClick) {
+            mouseTimer = setTimeout(() => {
+                mouseShortClickSet(false);
+                offsiteLinkClickedSet(false);
+            }, 200);
+        };
+
+        return () => { clearTimeout(mouseTimer); };
+    }, [mouseShortClick]);
+
+    // only link to project is mouse has been down in the last 200ms
+    // and if no links on the card were clicked
+    function cardClickHandler(onMouseUpEvent, projectName) {
+        onMouseUpEvent.preventDefault();
+
+        if (mouseShortClick && !offsiteLinkClicked) {
+            router.push(`/projects/${projectName}`);
+        };
+
+        return () => clearTimeout(clickTimer);
+    }
 
     return (
         <div id={styles.projects}>
@@ -48,7 +77,11 @@ import PropTypes from 'prop-types';
                                 const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics } = repo;
 
                                 return (
-                                    <li className={styles.projectLi} key={i + 'i'}>
+                                    <li
+                                        onMouseDown={() => { mouseShortClickSet(true); }}
+                                        onMouseUp={(e) => { cardClickHandler(e, name) }}
+                                        className={styles.projectLi}
+                                        key={i + 'i'}>
                                         {/* <Link href={`/projects/${name}`} > */}
                                         <div className={styles.projectCard} >
                                             <div className={styles.top}>
@@ -69,19 +102,19 @@ import PropTypes from 'prop-types';
                                             {/* style text top left */}
                                             <div className={styles.bottom}>
                                                 <div id={styles.header}>
-                                                    <span className={styles.offsiteLinks}>
+                                                    <span onClick={() => offsiteLinkClickedSet(true)} className={styles.offsiteLinks}>
                                                         <h4>status</h4>
                                                         <span className={styles.linkDivider}>|</span>
                                                         <a
+                                                            onMouseDown={() => { offsiteLinkClickedSet(true); }}
                                                             target='_blank' rel='noreferrer'
                                                             href={homepageUrl || githubUrl}>
                                                             {homepageUrl ? 'production' : 'development'}
                                                         </a>
                                                     </span>
                                                     <h3 id={styles.title}>{name}</h3>
-                                                    <p className={styles.description}>{description}</p>
+                                                        <p className={styles.description}>{description}</p>
                                                 </div>
-                                                {/* may conditionally render if no deployment */}
                                                 <div className={styles.tagsCard}>
                                                     <ul>
                                                         {

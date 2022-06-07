@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { githubReposQuery as query } from '../../lib/queryStrings';
 import graphqlFetch from '../../lib/graphqlFetch';
 import styles from './index.module.scss';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
@@ -31,13 +30,13 @@ export default function Projects({ repos }) {
 
     // initial and interval setting of the tagsDisplay for project cards
     useEffect(() => {
-        if (!tagsDisplay) { tagsDisplaySet(newTagsMap(repos), charLength); };
+        if (!tagsDisplay) { tagsDisplaySet(newTagsMap(repos, charLength)); };
 
-        const topicsTimer = setTimeout(() => {
+        const tagsTimer = setTimeout(() => {
             tagsDisplaySet(() => newTagsMap(repos, charLength))
         }, 2000);
 
-        return () => { clearTimeout(topicsTimer); };
+        return () => { clearTimeout(tagsTimer); };
     }, [repos, tagsDisplay, charLength]);
 
     // 'release' mouseShortClick to avoid linking from cards on highlight clicks
@@ -74,7 +73,7 @@ export default function Projects({ repos }) {
                     <ul className={styles.mainUl}>
                         {
                             repos && repos.map((repo, i) => {
-                                const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, topics } = repo;
+                                const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt } = repo;
 
                                 return (
                                     <li
@@ -82,7 +81,6 @@ export default function Projects({ repos }) {
                                         onMouseUp={(e) => { cardClickHandler(e, name) }}
                                         className={styles.projectLi}
                                         key={i + 'i'}>
-                                        {/* <Link href={`/projects/${name}`} > */}
                                         <div className={styles.projectCard} >
                                             <div className={styles.top}>
                                                 <div className={styles.imageCard}>
@@ -145,15 +143,15 @@ Projects.propTypes = {
             imageUrl: PropTypes.string.isRequired, // this defaults to profile image so if it's missing there's a problem
             description: PropTypes.string,
             lastPushAt: PropTypes.string,
-            topics: PropTypes.array,
+            tags: PropTypes.array,
         })
     ),
 };
 
-const newTagsMap = (arr, charLength) => (
+const newTagsMap = (repos, charLength) => (
     // maps over an array of objects
     // returns array of string arrays(tags)
-    arr.map(repo => (
+    repos.map(repo => (
         repo?.tags
             .slice()
             .sort(() => Math.random() - .5)

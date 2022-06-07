@@ -6,29 +6,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-export async function getStaticProps() {
+    const [tagsDisplay, tagsDisplaySet] = useState(null);
+    const [charLength, charLengthSet] = useState(18);
 
-    const graphResp = await graphqlFetch({ query });
-    const unformatted = graphResp.data.viewer.repositories.nodes;
-    const repos = unformatted.map(repo => {
-        const {
-            name,
-            homepageUrl,
-            url: githubUrl,
-            openGraphImageUrl: imageUrl,
-            pushedAt: lastPushAt,
-            languages,
-            repositoryTopics
-        } = repo;
-        const tags = languages.nodes.map(lang => lang.name)
-            .concat(
-                repositoryTopics.nodes
-                    .map(obj => obj.topic.name)
-                    .filter(e => e !== 'portfolio')
-            );
-        const description = repo.description?.slice(0, 30).concat('..');
-        return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, tags };
-    });
+    // context pls
+    const isLargeBrowser = useMediaQuery('(min-width: 1240px)');
+    const isMediumBrowser = useMediaQuery('(min-width: 768px)');
 
     return {
         props: { repos, },
@@ -36,41 +19,21 @@ export async function getStaticProps() {
     };
 };
 
-const newTagsMap = (arr) => (
-    // maps over an array of objects
-    // returns array of string arrays(tags)
-    arr.map(repo => (
-        repo?.tags
-            .slice()
-            .sort(() => Math.random() - .5)
-            .slice(0, 3)
-    ))
-);
-
-Projects.propTypes = {
-    repos: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string,
-            homepageUrl: PropTypes.string,
-            githubUrl: PropTypes.string.isRequired,
-            imageUrl: PropTypes.string.isRequired, // this defaults to profile image so if it's missing there's a problem
-            description: PropTypes.string,
-            lastPushAt: PropTypes.string,
-            topics: PropTypes.array,
-        })
-    ),
-};
-
-export default function Projects({ repos }) {
-    const [tagsDisplay, tagsDisplaySet] = useState(null);
+    useEffect(() => {
+        charLengthSet(
+            isLargeBrowser && 28
+            || isMediumBrowser && 14
+            || 12
+        )
+    }, [isLargeBrowser, isMediumBrowser])
 
     // initial and interval setting of the tagsDisplay for project cards
     useEffect(() => {
-        if (!tagsDisplay) { tagsDisplaySet(newTagsMap(repos)); };
+        if (!tagsDisplay) { tagsDisplaySet(newTagsMap(repos), charLength); };
 
         const topicsTimer = setTimeout(() => {
-            tagsDisplaySet(() => newTagsMap(repos))
-        }, 3000);
+            tagsDisplaySet(() => newTagsMap(repos, charLength))
+        }, 300);
 
         return () => { clearTimeout(topicsTimer); };
     }, [repos, tagsDisplay]);
@@ -122,7 +85,7 @@ export default function Projects({ repos }) {
                                                 <div className={styles.tagsCard}>
                                                     <ul>
                                                         {
-                                                            tagsDisplay?.[i] && tagsDisplay[i].map((e, k) => <li key={k + 'ijk'}>{'#' + e + ' '}</li>)
+                                                            tagsDisplay?.[i] && tagsDisplay[i].map((e, k) => <li key={k + 'ijk'}>{e + ' '}</li>)
                                                         }
                                                     </ul>
                                                 </div>
@@ -154,3 +117,48 @@ Projects.propTypes = {
     ),
 };
 
+const newTagsMap = (arr, charLength) => (
+    // maps over an array of objects
+    // returns array of string arrays(tags)
+    arr.map(repo => (
+        repo?.tags
+            .slice()
+            .sort(() => Math.random() - .5)
+            .reduce((acc, tag) => {
+                const newAcc = [...acc, tag];
+                if (newAcc.join('').length < charLength) { return newAcc; };
+                return acc;
+            }, [])
+    ))
+);
+
+export async function getStaticProps() {
+
+    const graphResp = await graphqlFetch({ query });
+    const unformatted = graphResp.data.viewer.repositories.nodes;
+    const repos = unformatted.map(repo => {
+        const {
+            name,
+            homepageUrl,
+            url: githubUrl,
+            openGraphImageUrl: imageUrl,
+            pushedAt: lastPushAt,
+            languages,
+            repositoryTopics,
+            description,
+        } = repo;
+        const tags = languages.nodes.map(lang => lang.name)
+            .concat(
+                repositoryTopics.nodes
+                    .map(obj => obj.topic.name)
+                    .filter(e => e !== 'portfolio')
+            );
+        // const description = repo.description?.slice(0, 30).concat('..');
+        return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, tags };
+    });
+
+    return {
+        props: { repos, },
+        revalidate: 60 * 30,
+    };
+};

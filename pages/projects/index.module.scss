@@ -11,7 +11,9 @@
 }
 
 #mainSection .mainUl {
+    flex-wrap: wrap;
     list-style-type: none;
+    gap: 2rem;
     margin: 0;
     padding: 2rem;
     display: flex;
@@ -154,8 +156,7 @@
     margin-top: 1rem;
 }
 
-#header .descCont {
-}
+#header .descCont {}
 
 #header .description {
     overflow: hidden;

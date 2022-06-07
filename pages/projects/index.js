@@ -35,7 +35,7 @@ export default function Projects({ repos }) {
 
         const topicsTimer = setTimeout(() => {
             tagsDisplaySet(() => newTagsMap(repos, charLength))
-        }, 300);
+        }, 2000);
 
         return () => { clearTimeout(topicsTimer); };
     }, [repos, tagsDisplay, charLength]);
@@ -113,7 +113,7 @@ export default function Projects({ repos }) {
                                                         </a>
                                                     </span>
                                                     <h3 id={styles.title}>{name}</h3>
-                                                        <p className={styles.description}>{description}</p>
+                                                    <p className={styles.description}>{description}</p>
                                                 </div>
                                                 <div className={styles.tagsCard}>
                                                     <ul>
@@ -169,26 +169,28 @@ export async function getStaticProps() {
 
     const graphResp = await graphqlFetch({ query });
     const unformatted = graphResp.data.viewer.repositories.nodes;
-    const repos = unformatted.map(repo => {
-        const {
-            name,
-            homepageUrl,
-            url: githubUrl,
-            openGraphImageUrl: imageUrl,
-            pushedAt: lastPushAt,
-            languages,
-            repositoryTopics,
-            description,
-        } = repo;
-        const tags = languages.nodes.map(lang => lang.name)
-            .concat(
-                repositoryTopics.nodes
-                    .map(obj => obj.topic.name)
-                    .filter(e => e !== 'portfolio')
-            );
-        // const description = repo.description?.slice(0, 30).concat('..');
-        return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, tags };
-    });
+    const repos = unformatted
+        .sort((a, b) => (Date.parse(b.pushedAt) - Date.parse(a.pushedAt)))
+        .map(repo => {
+            const {
+                name,
+                homepageUrl,
+                url: githubUrl,
+                openGraphImageUrl: imageUrl,
+                pushedAt: lastPushAt,
+                languages,
+                repositoryTopics,
+                description,
+            } = repo;
+            const tags = languages.nodes.map(lang => lang.name)
+                .concat(
+                    repositoryTopics.nodes
+                        .map(obj => obj.topic.name)
+                        .filter(e => e !== 'portfolio')
+                );
+
+            return { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt, tags };
+        });
 
     return {
         props: { repos, },

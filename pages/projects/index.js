@@ -139,3 +139,18 @@ export default function Projects({ repos }) {
         </div >
     );
 };
+
+Projects.propTypes = {
+    repos: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string,
+            homepageUrl: PropTypes.string,
+            githubUrl: PropTypes.string.isRequired,
+            imageUrl: PropTypes.string.isRequired, // this defaults to profile image so if it's missing there's a problem
+            description: PropTypes.string,
+            lastPushAt: PropTypes.string,
+            topics: PropTypes.array,
+        })
+    ),
+};
+

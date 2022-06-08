@@ -18,10 +18,10 @@ export default function Layout({ children, pageTitle }) {
                         <div id={styles.mainUl}>
                             <ul>
                                 <li><h1><Link href='/'><a><WiSunset id={styles.icon} />Joshua</a></Link></h1></li>
-                                <li><Link href='/projects'>projects</Link></li><div>.</div>
-                                <li><a href='https://resume.io/r/srFhKDi7i' target='_blank' rel='noreferrer'>resume</a></li><div>.</div>
-                                <li><Link href='/about'>about</Link></li><div>.</div>
-                                <li><Link href='/contact'>contact</Link></li><div>()</div>
+                                <li ><Link href='/projects'>projects</Link></li><div>.</div>
+                                <li ><a href='https://resume.io/r/srFhKDi7i' target='_blank' rel='noreferrer'>resume</a></li><div>.</div>
+                                <li ><Link href='/about'>about</Link></li><div>.</div>
+                                <li ><Link href='/contact'>contact</Link></li><div>()</div>
                             </ul>
                         </div>
                         <div className={styles.divider} ><div style={{ height: '50%', backgroundColor: 'var(--prim-clr)', width: '3px' }}></div> </div>

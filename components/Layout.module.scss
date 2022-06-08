@@ -5,9 +5,10 @@
     height: 100%;
 }
 
+
 .top,
 .footer {
-    flex-basis: 50vh; 
+    flex-basis: 50vh;
 }
 
 #layout nav {
@@ -106,8 +107,7 @@
     }
 
     #layout nav li h1 {
-
-        margin-left: 40px;
+        margin-left: 2rem;
     }
 
     #layout nav {
@@ -144,4 +144,10 @@
     margin: 14px;
     min-width: 4px;
     background-color: var(--white);
+}
+
+@media (max-width: 768px) {
+    #layout nav {
+        margin: 0px 2rem;
+    }
 }

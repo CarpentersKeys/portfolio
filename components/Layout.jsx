@@ -4,16 +4,23 @@ import styles from './Layout.module.scss';
 import { AiFillGithub, } from 'react-icons/ai';
 import { WiSunset } from 'react-icons/wi';
 import Contact from './Contact';
+import { useRouter } from 'next/router';
+import formatPageTitle from '../lib/formatPageTitle';
 
-export default function Layout({ children, pageTitle }) {
+export default function Layout({ children }) {
+    const router = useRouter();
+    const path = router.asPath;
+    const pageTitle = path.length < 2 && 'Home' || formatPageTitle(path)
 
     return (
         <div className={styles.wholeView}>
+            <Head>
+                <title>
+                    {`Joshua O'Neill Web Developer Portfolio${pageTitle && ' | ' + pageTitle}`}
+                </title>
+            </Head>
             <div className={styles.top}>
                 <div id={styles.layout}>
-                    <Head>
-                        <title>{`Joshua O'Neill Web Developer Portfolio.`}</title>
-                    </Head>
                     <nav>
                         <div id={styles.mainUl}>
                             <ul>

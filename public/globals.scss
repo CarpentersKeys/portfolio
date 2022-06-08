@@ -20,6 +20,7 @@
 
 html {
   box-sizing: border-box;
+  height: webkit-fill-available;
 }
 
 *,
@@ -37,6 +38,7 @@ body {
   background-color: var(--black);
   color: var(--white);
   font-size: var(--font-size);
+  height: webkit-fill-available;
 }
 
 #__next {

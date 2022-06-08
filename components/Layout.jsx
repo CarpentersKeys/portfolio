@@ -10,13 +10,20 @@ import formatPageTitle from '../lib/formatPageTitle';
 export default function Layout({ children }) {
     const router = useRouter();
     const path = router.asPath;
-    const pageTitle = path.length < 2 && 'Home' || formatPageTitle(path)
+    const pathTitle = path.length < 2 && 'Home' || formatPageTitle(path);
+    const pageTitle = `Joshua O'Neill Web Developer Portfolio${pathTitle && ' | ' + pathTitle}`;
+    const ogUrl = process.env.NEXT_PUBLIC_VERCEL_URL || process.env.DEFAULT_URL;
 
     return (
         <div className={styles.wholeView}>
             <Head>
+                <meta property="og:image" content="https://repository-images.githubusercontent.com/488019984/9b387b39-380c-4547-99fc-e4a6f33efb35" />
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:description" content="My technical efforts and endeavours" />
+                <meta property="og:type" content="Portfolio Website" />
+                <meta property="og:url" content={ogUrl} />
                 <title>
-                    {`Joshua O'Neill Web Developer Portfolio${pageTitle && ' | ' + pageTitle}`}
+                    {pageTitle}
                 </title>
             </Head>
             <div className={styles.top}>

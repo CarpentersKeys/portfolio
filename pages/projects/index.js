@@ -18,8 +18,6 @@ export default function Projects({ repos }) {
     const isLargeBrowser = useMediaQuery('(min-width: 1240px)');
     const isMediumBrowser = useMediaQuery('(min-width: 768px)');
 
-    useEffect(() => { console.log(charLength) }, [charLength])
-
     useEffect(() => {
         charLengthSet(
             isLargeBrowser && 28

@@ -3,7 +3,6 @@ import '../public/globals.scss'
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
-  console.log(Component.pagename);
 
   return (
     <>

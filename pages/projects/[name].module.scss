@@ -171,10 +171,20 @@
         height: auto;
         min-width: 115px;
         place-content: center;
-        margin: .6rem;
+        margin: 0;
         padding: .5rem;
         background-color: var(--tert-clr);
         border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #push h4,
+    #push span {
+        margin: auto;
+    }
+
+    #title {
+        margin-bottom: 1rem;
     }
 
     .textSection,

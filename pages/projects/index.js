@@ -74,7 +74,6 @@ export default function Projects({ repos }) {
                         {
                             repos && repos.map((repo, i) => {
                                 const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt } = repo;
-                                console.log(imageUrl)
 
                                 return (
                                     <li

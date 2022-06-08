@@ -12,7 +12,7 @@ export default function Layout({ children, pageTitle }) {
             <div className={styles.top}>
                 <div id={styles.layout}>
                     <Head>
-                        <title>{`Joshua O'Neill Web Developer Portfolio. Page: ${pageTitle}`}</title>
+                        <title>{`Joshua O'Neill Web Developer Portfolio.`}</title>
                     </Head>
                     <nav>
                         <div id={styles.mainUl}>
@@ -47,7 +47,6 @@ export default function Layout({ children, pageTitle }) {
                 <div id={styles.botGrad}></div>
                 <Contact />
             </footer>
-            {/* <div id={styles.spacerBot}></div> */}
         </div>
     )
 }

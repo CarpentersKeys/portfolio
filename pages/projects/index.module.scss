@@ -59,6 +59,9 @@
 
 #header {
     font-size: 1rem;
+    // flex-direction: column;
+    // display: flex;
+    display: block;
 }
 
 .offsiteLinks h4 {
@@ -73,8 +76,9 @@
 
 .offsiteLinks {
     margin: 0;
+    width: 100%;
     padding: 0;
-    display: inline;
+    display: block;
     font-size: 1.6rem;
     display: flex;
     flex-wrap: wrap;
@@ -82,27 +86,20 @@
     margin-top: .6rem;
 }
 
-.offsiteLinks a {}
-
 .linkDivider {
     margin: 0 .3rem;
 }
 
 #title {
+    display: block;
+    width: 100%;
+    margin: 0;
     font-family: var(--spartan);
     font-size: 2rem;
     padding: 0;
     margin-top: 1rem;
 }
 
-#statusButton {
-    margin-bottom: 1rem;
-    background-color: var(--tert-clr);
-}
-
-#statusButton h5 {
-    margin: 0;
-}
 
 // card
 #projects p {
@@ -116,28 +113,6 @@
     margin: 0 .3rem;
 }
 
-#statusButton h5,
-#statusButton span {
-    display: inline;
-    font-weight: 100;
-    margin: 0px;
-    padding: 0;
-    color: var(--white);
-    font-size: 1rem;
-}
-
-#imageCont {
-    // display: inline-block;
-    width: 156px;
-    height: 131px;
-    padding: 0;
-    margin: 0;
-    background-color: red;
-}
-
-#header {
-    font-size: 1rem;
-}
 
 .offsiteLinks {
     font-size: 1.6rem;
@@ -156,7 +131,10 @@
     margin-top: 1rem;
 }
 
-#header .descCont {}
+#header #title {
+    flex-basis: 100%;
+    width: 100%;
+}
 
 #header .description {
     overflow: hidden;
@@ -215,7 +193,7 @@
 
 .imageCard {
     position: relative;
-    height: stretch;
+    height: 100%;
 }
 
 // mobile

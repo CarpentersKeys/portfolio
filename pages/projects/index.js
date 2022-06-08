@@ -74,6 +74,7 @@ export default function Projects({ repos }) {
                         {
                             repos && repos.map((repo, i) => {
                                 const { name, homepageUrl, githubUrl, imageUrl, description, lastPushAt } = repo;
+                                console.log(imageUrl)
 
                                 return (
                                     <li
@@ -84,18 +85,18 @@ export default function Projects({ repos }) {
                                         <div className={styles.projectCard} >
                                             <div className={styles.top}>
                                                 <div className={styles.imageCard}>
-                                                    {/* probably what I need here  */}
-                                                    image && <Image
-                                                        alt='repository image'
-                                                        className={styles.image}
-                                                        // maybe format images to be wide bannerlike things with a couple items on them
-                                                        src={imageUrl}
-                                                        layout='fill'
-                                                        priority
-                                                        objectFit="cover"
-                                                        objectPosition='center'
-                                                    />
-                                                </div>
+                                                    {
+                                                        imageUrl && <Image
+                                                            alt='repository image'
+                                                            className={styles.image}
+                                                            // maybe format images to be wide bannerlike things with a couple items on them
+                                                            src={imageUrl}
+                                                            layout='fill'
+                                                            priority
+                                                            objectFit="cover"
+                                                            objectPosition='center'
+                                                        />
+                                                    }                                                </div>
                                             </div>
                                             {/* style text top left */}
                                             <div className={styles.bottom}>

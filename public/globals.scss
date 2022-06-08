@@ -18,6 +18,10 @@
 
 /* border box model: https://css-tricks.com/box-sizing/ */
 
+html, body {
+  line-height: 1.6rem;
+}
+
 html {
   box-sizing: border-box;
   height: webkit-fill-available;

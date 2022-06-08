@@ -96,7 +96,8 @@ export default function Projects({ repos }) {
                                                             objectFit="cover"
                                                             objectPosition='center'
                                                         />
-                                                    }                                                </div>
+                                                    }
+                                                </div>
                                             </div>
                                             {/* style text top left */}
                                             <div className={styles.bottom}>

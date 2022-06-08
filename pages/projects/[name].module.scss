@@ -1,7 +1,7 @@
 #project {
     padding: 0;
     margin: 0;
-    flex-basis: 100vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
 }
@@ -14,9 +14,11 @@
     margin: 0;
     padding: 2rem;
     display: flex;
-    flex-direction: row;
-    flex-basis: 100vw;
+    flex-direction: column;
+    flex-basis: 100%;
+    height: 100%;
     justify-content: space-between;
+    gap: 2rem;
 }
 
 #project p {
@@ -25,11 +27,9 @@
     padding: 0;
 }
 
-.left {
+.textSection {
     display: flex;
     flex-direction: column;
-    max-width: 38vw;
-    flex-basis: 50vw;
     background-color: var(--tert-transp-clr);
     // background-color: red;
     padding: 1rem;
@@ -76,29 +76,36 @@
     font-size: 1rem;
 }
 
-.left p {
+.textSection p {
     margin-top: 1rem;
-    // background-color: red;
 }
 
-.right {
+.imageSection {
     align-content: flex-end;
     display: flex;
     flex-direction: column;
-    max-width: 38vw;
-    flex-basis: 50vw;
     padding: 1rem;
     background-color: var(--tert-transp-clr);
+    flex-basis: 50vw;
     border-radius: 1rem;
-    // background-color: green;
+    position: relative;
+    border-radius: 1rem;
+    background-color: var(--black);
+    border-width: 1px;
+    border-style: groove;
+    border-color: var(--tert-light-clr);
+}
+
+
+.imageSection:hover {
+    background-color: var(--tert-transp-clr);
 }
 
 .imageCard {
+    padding: 1rem;
     position: relative;
     height: 100%;
 }
-
-// .image {}
 
 #tagsSection {
     margin: 0;
@@ -169,10 +176,12 @@
         background-color: var(--tert-clr);
         border-radius: 1rem;
     }
-}
 
-@media (max-width: 705px) {
-    #mainSection main {
-        flex-direction: column;
+    .textSection,
+    .imageSection {
+        flex-basis: 50vw;
+        max-width: 38vw;
     }
 }
+
+@media (max-width: 705px) {}

@@ -34,7 +34,7 @@ export default function Project({
     }, [languages, repositoryTopics]);
 
     useEffect(() => {
-            tagsSet(spreadStringsOverRowsByChars(initTags, maxRowChars));
+        tagsSet(spreadStringsOverRowsByChars(initTags, maxRowChars));
     }, [initTags, maxRowChars]);
 
     useEffect(() => {
@@ -53,7 +53,7 @@ export default function Project({
         <div id={styles.project}>
             <section id={styles.mainSection}>
                 <main>
-                    <div className={styles.left}>
+                    <div className={styles.textSection}>
                         <div id={styles.topLeft}>
                             <div id={styles.header}>
                                 <span className={styles.offsiteLinks}>
@@ -86,7 +86,10 @@ export default function Project({
                         <p>{description}</p>
 
                     </div>
-                    <div className={styles.right}>
+                    <a
+                        target='_blank' rel='noreferrer'
+                        href={homepageUrl}
+                        className={styles.imageSection}>
                         <div className={styles.imageCard}>
                             <Image
                                 alt='repository image'
@@ -96,11 +99,13 @@ export default function Project({
                                 // width='317px' height='317px'
                                 layout="fill"
                                 priority
-                                objectFit="contain"
+                                objectFit={
+                                    isLargeBrowser && 'contain' || 'fill'
+                                }
                                 objectPosition='center'
                             />
                         </div>
-                    </div>
+                    </a>
                 </main>
             </section>
             <section id={styles.tagsSection}>

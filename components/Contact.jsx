@@ -13,7 +13,7 @@ export default function Contact() {
             <div id={styles.iconsCont}>
                 <div>
                     <p id={styles.iconText}>Here&apos;s my email.</p>
-                    <a href='mailto:joneilltechnical@gmail.coma'><GrMail /></a>
+                    <a href='mailto:joneilltechnical@gmail.com'><GrMail /></a>
                 </div>
                 <div>
                     <p id={styles.iconText}>Just want to chat?</p>

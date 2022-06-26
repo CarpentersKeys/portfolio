@@ -28,7 +28,7 @@ All the content is hardcode on these pages, most of the work went into styling t
 ### Projects
 Githubs grapql API makes it possible to query for details about ones repositories and other profile information. Using an Auth Token the site is able to proxy as the repository owner, the permissions for this instance are limited to public access as the use case is simplistic but theoretically much more powerful interface with Github functionality is possible.
 ![Image](public/port2.png)
-### Indivual Projects
+### Individual Projects
 Clicking through the Projects page takes the user to a dynamically generated details page for the given project. The Nextjs framework is capable of running programatic datafetching at build time on the Vercel servers before populating and statically generating the list of paths based on the given data. That's what's done here.
 ![Image](public/port3.png)
 ([back to top](#top))

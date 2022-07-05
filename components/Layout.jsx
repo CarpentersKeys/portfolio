@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import styles from './Layout.module.scss';
-import { AiFillGithub, } from 'react-icons/ai';
+import { AiFillGithub, AiFillLinkedin} from 'react-icons/ai';
 import { WiSunset } from 'react-icons/wi';
 import Contact from './Contact';
 import { useRouter } from 'next/router';
@@ -48,6 +48,13 @@ export default function Layout({ children }) {
                                     <a aria-label='Joshua&apos;s git hub' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://github.com/CarpentersKeys">
                                         <div >
                                             <AiFillGithub />
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a aria-label='Joshua&apos;s linked in' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://www.linkedin.com/in/joshua-o-neill-56b531241/">
+                                        <div >
+                                            <AiFillLinkedin />
                                         </div>
                                     </a>
                                 </li>

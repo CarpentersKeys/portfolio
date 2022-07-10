@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import styles from './Layout.module.scss';
-import { AiFillGithub, AiFillLinkedin} from 'react-icons/ai';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { SiCodewars } from 'react-icons/si';
 import { WiSunset } from 'react-icons/wi';
 import Contact from './Contact';
 import { useRouter } from 'next/router';
@@ -44,6 +45,13 @@ export default function Layout({ children }) {
                         <div className={styles.divider} ><div style={{ height: '50%', backgroundColor: 'var(--prim-clr)', width: '3px' }}></div> </div>
                         <div id={styles.offsiteUl}>
                             <ul>
+                                <li>
+                                    <a aria-label='Joshua&apos;s code wars profile' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://www.codewars.com/users/Wheelwright">
+                                        <div >
+                                            <SiCodewars />
+                                        </div>
+                                    </a>
+                                </li>
                                 <li>
                                     <a aria-label='Joshua&apos;s git hub' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://github.com/CarpentersKeys">
                                         <div >

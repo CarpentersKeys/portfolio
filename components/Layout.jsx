@@ -46,7 +46,7 @@ export default function Layout({ children }) {
                         <div id={styles.offsiteUl}>
                             <ul>
                                 <li>
-                                    <a aria-label='Joshua&apos;s code wars profile' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://www.codewars.com/users/Wheelwright">
+                                    <a aria-label='Joshua&apos;s code wars profile' className={styles.iconLink} rel="noreferrer noopener" target="_blank" href="https://www.codewars.com/users/Wheelwright/completed">
                                         <div >
                                             <SiCodewars />
                                         </div>
